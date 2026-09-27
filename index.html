@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Touch DAP V12</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+      <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="return false;">
+
+    <div id="player-screen">
+        <div id="file-container">
+            <input type="file" id="audio-upload" webkitdirectory directory multiple>
+        </div>
+        
+        <div id="toast">SHUFFLE ON</div>
+
+        <div id="overlay">
+            <div class="track-info">
+                <h1 id="track-title">No Folder Loaded</h1>
+                <h2 id="track-artist">Select a music folder to begin</h2>
+            </div>
+            <div id="playlist-counter" style="display: none;">0 / 0</div>
+        </div>
+
+        <div id="lyrics-panel" class="panel">
+            <div class="lib-header lyrics-header">
+                <div class="lyrics-heading-row">
+                    <img id="lyrics-art" alt="" hidden>
+                    <div class="lyrics-heading">
+                        <span id="lyrics-title">Lyrics</span>
+                        <span id="lyrics-artist"></span>
+                    </div>
+                </div>
+                <div class="header-actions single-action">
+                    <span id="lyrics-close" class="mac-control mac-close" role="button" aria-label="Close Lyrics" title="Close"></span>
+                </div>
+            </div>
+            <div id="lyrics-container"></div>
+        </div>
+
+        <div id="library-panel" class="panel">
+            <div class="lib-header">
+                <div class="header-leading">
+                    <span id="lib-title">Library</span>
+                </div>
+                <div class="header-actions single-action">
+                    <span id="lib-close" class="mac-control mac-close" role="button" aria-label="Close Library" title="Close"></span>
+                </div>
+            </div>
+            <div id="lib-content"></div>
+        </div>
+
+        <div id="coverflow-panel" class="panel">
+            <div class="cf-header">
+                <div class="header-leading">
+                    <span class="cf-panel-label">Albums</span>
+                </div>
+                <div class="header-actions single-action">
+                    <span id="cf-close" class="mac-control mac-close" role="button" aria-label="Close Albums" title="Close">Close</span>
+                </div>
+            </div>
+            <div id="cf-stage"></div>
+            <div id="cf-album-title">Album</div>
+            <div id="cf-album-artist">Artist</div>
+            <div id="cf-scrubber"></div>
+        </div>
+
+       <script src="app.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log('Service Worker Registered'));
+        });
+    }
+</script>
+</body>
+</html>
